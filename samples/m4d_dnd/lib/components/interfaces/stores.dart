@@ -56,23 +56,3 @@ abstract class NaturalLanguageStore extends DataStore {
 
 // - Actions sent by our app -------------------------------------------------------------------------------------------
 
-//class AddItemAction extends DataAction<ToDoItem> {
-//    static const ActionName NAME = const ActionName("mdl_todo_sample.components.interfaces.AddItemAction");
-//    const AddItemAction(final ToDoItem item) : super(NAME,item);
-//}
-//
-//class ItemCheckedAction extends DataAction<ToDoItem> {
-//    static const ActionName NAME = const ActionName("mdl_todo_sample.components.interfaces.ItemCheckedAction");
-//    const ItemCheckedAction(final ToDoItem item) : super(NAME,item);
-//}
-//
-//class RemoveItemAction extends DataAction<ToDoItem> {
-//    static const ActionName NAME = const ActionName("mdl_todo_sample.components.interfaces.RemoveItemAction");
-//    const RemoveItemAction(final ToDoItem item) : super(NAME,item);
-//}
-//
-//class ListChangedAction extends Action {
-//  static const ActionName NAME = const ActionName("mdl_todo_sample.components.interfaces.ListChangedAction");
-//  const ListChangedAction() : super(ActionType.Signal, NAME);
-//}
-//

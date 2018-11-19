@@ -66,6 +66,13 @@ class MaterialDropZone extends MdlComponent {
                 final StringToFunction stf = new StringToFunction(functionToCall);
 
                 _logger.info("FunctionToCall ${stf.functionAsString}(${stf.params.join(",")})");
+                final events = ioc.IOCContainer().resolve(dndService.DNDEvents).as<ioc.ToEvents>();
+                if(events().containsKey(stf.functionAsString)) {
+                    Function.apply(events()[stf.functionAsString],[data]);
+                } else {
+                    _logger.info("${stf.functionAsString} is not a registered DNDEvnet");
+                }
+
                 //_logger.info("STF ${stf.functionAsString}");
                 //_logger.info("Scope ${scope.rootContext}");
                 //_logger.info("Scope ${scope.rootContext}");

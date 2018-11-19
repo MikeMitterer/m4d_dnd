@@ -19,46 +19,36 @@
 
 library m4d_dnd_sample;
 
-import 'dart:async';
-import 'dart:collection';
 import 'dart:html' as dom;
-import 'dart:math' as Math;
+
+import 'package:logging/logging.dart';
+import 'package:m4d_dnd/m4d_dnd.dart';
+import 'package:validate/validate.dart';
 
 import "package:m4d_core/m4d_core.dart";
-
 export "package:m4d_core/m4d_core.dart";
-
 import "package:m4d_core/m4d_ioc.dart" as ioc;
 
-import "package:m4d_components/m4d_components.dart";
+import "package:m4d_flux/m4d_flux.dart";
 import 'package:m4d_template/m4d_template.dart';
-// import "package:m4d_components/m4d_formatter.dart";
 
-// import 'package:m4d_flux/m4d_flux.dart';
-// export 'package:m4d_flux/m4d_flux.dart';
+import 'services.dart' as sampleService;
 
-import 'package:m4d_animation/m4d_animation.dart';
-import 'package:m4d_translate/m4d_translate.dart';
-
-import 'components.dart';
 import 'services.dart' as dndService;
-import 'datastore.dart';
+import 'components/interfaces/stores.dart';
+
+part 'components/LanguagesComponent.dart';
 
 class DNDSampleModule extends ioc.IOCModule {
 
-    final _store = DNDDataStore();
-    
     @override
     configure() {
         registerDNDLanguagesComponent();
-
-        ioc.IOCContainer().bind(dndService.LanguageStore).to(_store);
     }
 
-    // @override
-    // List<ioc.IOCModule> get dependsOn => [
-    //     CoreComponentsModule(),
-    //     TranslationModule(),
-    //     DirectivesModule()
-    // ];
+    @override
+    List<ioc.IOCModule> get dependsOn =>
+        [
+            DNDModule(),
+        ];
 }

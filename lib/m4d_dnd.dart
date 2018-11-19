@@ -39,8 +39,8 @@ import 'services.dart' as dndService;
 
 import 'package:dnd/dnd.dart';
 
-part "dnd/MaterialDraggable.dart";
-part "dnd/MaterialDropZone.dart";
+part "dnd/components/MaterialDraggable.dart";
+part "dnd/components/MaterialDropZone.dart";
 
 abstract class DataProvider {
     dynamic provide(final String data);
