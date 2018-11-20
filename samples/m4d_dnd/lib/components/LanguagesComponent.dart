@@ -5,11 +5,11 @@ class LanguagesComponent extends MdlTemplateComponent implements DataProvider {
 
     static const _cssClasses = _LanguagesComponentCssClasses();
 
-    final LanguageStore _store;
+    /// no final because it will be initialized in [_init]
+    dynamic _store;
 
     LanguagesComponent.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
-        : _store = iocContainer.resolve(sampleService.LanguageStore).as<LanguageStore>(),
-            super(element,iocContainer) {
+        : super(element,iocContainer) {
 
         _init();
     }
@@ -21,7 +21,20 @@ class LanguagesComponent extends MdlTemplateComponent implements DataProvider {
     //- private -----------------------------------------------------------------------------------
 
     void _init() {
-        _logger.fine("DNDLanguagesComponent - init");
+        _logger.fine("DNDLanguagesComponent - init (StoreType: ${_storeType})");
+
+        // TODO: Change injector to something that fits the IOC-Container
+        switch(_storeType) {
+            case "all":
+            _store = injector.resolve(sampleService.LanguageStore).as<LanguageStore>();
+            break;
+            case "programming":
+            _store = injector.resolve(sampleService.ProgrammingLanguageStore).as<ProgrammingLanguageStore>();
+            break;
+            case "natural":
+            _store = injector.resolve(sampleService.NaturalLanguageStore).as<NaturalLanguageStore>();
+            break;
+        }
 
         render().then((_) => _bindSignals() );
 
@@ -34,30 +47,55 @@ class LanguagesComponent extends MdlTemplateComponent implements DataProvider {
         });
     }
 
+    String get _storeType => DataAttribute.forAttribute(element, "type").asString();
+
+    String get _dropZone => DataAttribute.forAttribute(element, "drop-zone", onError: () => "").asString();
+
+    Set<Language> get _languages {
+        // TODO: Change injector to something that fits the IOC-Container
+        switch(_storeType) {
+            case "all":
+                return (_store as LanguageStore).languages;
+            case "programming":
+                return (_store as ProgrammingLanguageStore).programmingLanguages;
+            case "natural":
+                return (_store as NaturalLanguageStore).naturalLanguages;
+        }
+
+        throw ArgumentError("Wrong store type: ${_storeType}!");
+    }
+
     //- Template -----------------------------------------------------------------------------------
 
     @override
     String get template {
-        String _allRows() {
+        
+        String _allItems() {
             final buffer = StringBuffer();
-            _store.languages.forEach((final Language language) {
-                buffer.write(_row(language));
+            _languages.forEach((final Language language) {
+                buffer.write(_dragItem(language));
             });
             return buffer.toString();
         }
+
+        // Template must return one single element!!!!
         return  """
-            <div class="source langbox mdl-dnd__drag-container" >
-                ${_allRows()}
+            <div class="item-container ${_storeType}-languages">
+                ${_allItems()}
             </div>
             """;
     }
 
-    String _row(final Language language) {
+    String _dragItem(final Language language) {
+        String dropZone = _dropZone;
+        if(dropZone == "") {
+            dropZone = language.type;
+        }
 
         // mdl-draggable looks in DataConsumer (in this case this instance (is DataProvider))
         // and returns data for ${language.name}
         final row = """
-            <mdl-draggable class="language" consumes="${language.name}" drop-zone="${language.type}">
+            <mdl-draggable class="language" consumes="${language.name}" drop-zone="${dropZone}">
                 ${language.name}
             </mdl-draggable>
         """;

@@ -24,7 +24,21 @@
 @import "package:m4d_components/assets/styles/material-design-lite";
 @import "_app";
 
+languages {
+    display: block;
+
+    .item-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start; // ⇾
+        align-content: space-between; // ||
+        align-items: flex-start; // ↓
+    }
+}
+
 .demo-page--dnd, .demo-section--dnd {
+
     .danddcontainer {
         display        : block;
         flex-direction : column;

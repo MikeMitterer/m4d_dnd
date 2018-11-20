@@ -72,11 +72,6 @@ class MaterialDropZone extends MdlComponent {
                 } else {
                     _logger.info("${stf.functionAsString} is not a registered DNDEvnet");
                 }
-
-                //_logger.info("STF ${stf.functionAsString}");
-                //_logger.info("Scope ${scope.rootContext}");
-                //_logger.info("Scope ${scope.rootContext}");
-                // invoke.function(stf,varsToReplace: { "data" : data });
             };
         }
 
