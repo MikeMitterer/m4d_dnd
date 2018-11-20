@@ -20,9 +20,6 @@
 library m4d_dnd;
 
 import 'dart:html' as dom;
-import 'dart:async';
-import 'package:intl/intl.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:logging/logging.dart';
 import 'package:validate/validate.dart';
