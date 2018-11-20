@@ -4,8 +4,8 @@ import 'package:m4d_flux/m4d_flux.dart';
 import 'package:m4d_core/m4d_ioc.dart' as ioc;
 import 'package:m4d_dnd/services.dart' as dndService;
 
-import 'package:md4d_dnd_sample/components/interfaces/stores.dart';
-import 'package:md4d_dnd_sample/services.dart' as sampleService;
+import 'package:m4d_dnd_sample/components/interfaces/stores.dart';
+import 'package:m4d_dnd_sample/services.dart' as sampleService;
 
 class DNDDataStore extends Dispatcher
     implements LanguageStore, NaturalLanguageStore, ProgrammingLanguageStore {

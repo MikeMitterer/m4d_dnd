@@ -1,8 +1,8 @@
-name: md4d_dnd_sample
-description: Material Design Lite 'md4d_dnd_sample' Sample
-version: 0.1.3
+name: m4d_dnd_sample
+description: Material4Dart (m4d) 'm4d_dnd' Sample
+version: 0.1.0
 author: Mike Mitterer <office@mikemitterer.at>
-homepage: https://github.com/MikeMitterer/dart-material-design-lite
+homepage: https://github.com/MikeMitterer/m4d_dnd
 
 environment:
   sdk: ">=2.0.0 <3.0.0"
@@ -10,7 +10,7 @@ environment:
 dependencies:
 
   m4d_dnd:
-      path: ../..
+    path: ../..
 
   m4d_components: '>=0.1.0 <1.0.0'
   # path: /Volumes/Daten/DevLocal/DevDart/m4d/m4d_components

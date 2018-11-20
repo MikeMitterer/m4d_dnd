@@ -1,6 +1,3 @@
-import 'dart:html' as dom;
-import 'package:intl/intl.dart';
-
 import 'package:console_log_handler/console_log_handler.dart';
 
 import 'package:m4d_core/m4d_ioc.dart' as ioc;
@@ -10,7 +7,7 @@ import "package:m4d_components/m4d_components.dart";
 
 import 'package:m4d_dnd/m4d_dnd.dart';
 
-import 'package:md4d_dnd_sample/m4d_dnd_sample.dart';
+import 'package:m4d_dnd_sample/m4d_dnd_sample.dart';
 
 import 'parts/datastore.dart';
 
@@ -21,7 +18,7 @@ class Application extends MaterialApplication {
 }
 
 main() async {
-    configLogging(show: Level.FINER);
+    configLogging(show: Level.INFO);
 
     ioc.IOCContainer.bindModules([
         DNDSampleModule(), DNDDataStoreModule(), CoreComponentsModule()
