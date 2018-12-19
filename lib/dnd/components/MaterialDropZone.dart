@@ -29,7 +29,7 @@ class MaterialDropZone extends MdlComponent {
     final DragInfo _dragInfo = new DragInfo();
     Dropzone _dropzone;
 
-    MaterialDropZone.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    MaterialDropZone.fromElement(final dom.HtmlElement element,final ioc.Container iocContainer)
         : super(element,iocContainer) {
     }
     
@@ -66,7 +66,7 @@ class MaterialDropZone extends MdlComponent {
                 final StringToFunction stf = new StringToFunction(functionToCall);
 
                 _logger.info("FunctionToCall ${stf.functionAsString}(${stf.params.join(",")})");
-                final events = ioc.IOCContainer().resolve(dndService.DNDEvents).as<ioc.ToEvents>();
+                final events = ioc.Container().resolve(dndService.DNDEvents).as<ioc.ToEvents>();
                 if(events().containsKey(stf.functionAsString)) {
                     Function.apply(events()[stf.functionAsString],[data]);
                 } else {
@@ -147,7 +147,7 @@ class _MdlAcceptor extends Acceptor {
 void registerMaterialDropZone() {
     final MdlConfig config = new MdlConfig<MaterialDropZone>(
         _MaterialDropZoneConstant.WIDGET_SELECTOR,
-            (final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+            (final dom.HtmlElement element,final ioc.Container iocContainer)
                 => new MaterialDropZone.fromElement(element,iocContainer)
     );
     

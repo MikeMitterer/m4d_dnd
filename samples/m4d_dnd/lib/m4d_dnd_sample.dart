@@ -39,7 +39,7 @@ import 'components/interfaces/stores.dart';
 
 part 'components/LanguagesComponent.dart';
 
-class DNDSampleModule extends ioc.IOCModule {
+class DNDSampleModule extends ioc.Module {
 
     @override
     configure() {
@@ -47,7 +47,7 @@ class DNDSampleModule extends ioc.IOCModule {
     }
 
     @override
-    List<ioc.IOCModule> get dependsOn =>
+    List<ioc.Module> get dependsOn =>
         [
             DNDModule(),
         ];

@@ -42,7 +42,7 @@ class DNDDataStore extends Dispatcher
     // - private -------------------------------------------------------------------------------------
 
     void _bind() {
-        ioc.Container().bind(dndService.DNDEvents).toEvents(() {
+        ioc.IOCContainer().bind(dndService.DNDEvents).toEvents(() {
             return <String,Function>{
                 "addToProgrammingLanguages" : (data) => _addToProgrammingLanguages(data as Language),
                 "addToNaturalLanguages" : (data) => _addToNaturalLanguages(data as Language),
@@ -81,14 +81,14 @@ class DNDDataStore extends Dispatcher
     }
 }
 
-class DNDDataStoreModule extends ioc.Module {
+class DNDDataStoreModule extends ioc.IOCModule {
 
     final _store = DNDDataStore();
 
     @override
     configure() {
-        ioc.Container().bind(sampleService.LanguageStore).to(_store);
-        ioc.Container().bind(sampleService.ProgrammingLanguageStore).to(_store);
-        ioc.Container().bind(sampleService.NaturalLanguageStore).to(_store);
+        ioc.IOCContainer().bind(sampleService.LanguageStore).to(_store);
+        ioc.IOCContainer().bind(sampleService.ProgrammingLanguageStore).to(_store);
+        ioc.IOCContainer().bind(sampleService.NaturalLanguageStore).to(_store);
     }
 }

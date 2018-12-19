@@ -48,7 +48,7 @@ void registerMdlDND() {
     registerMaterialDropZone();
 }
 
-class DNDModule extends ioc.IOCModule {
+class DNDModule extends ioc.Module {
 
     @override
     configure() {

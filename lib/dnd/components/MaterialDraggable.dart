@@ -46,7 +46,7 @@ class MaterialDraggable extends MdlComponent /* implements MdlDataConsumer */ {
 
     Draggable _draggable;
 
-    MaterialDraggable.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    MaterialDraggable.fromElement(final dom.HtmlElement element,final ioc.Container iocContainer)
         : super(element,iocContainer) {
         
         _init();
@@ -138,7 +138,7 @@ class MaterialDraggable extends MdlComponent /* implements MdlDataConsumer */ {
 void registerMaterialDraggable() {
     final MdlConfig config = new MdlConfig<MaterialDraggable>(
         _MaterialDraggableConstant.WIDGET_SELECTOR,
-            (final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+            (final dom.HtmlElement element,final ioc.Container iocContainer)
                 => new MaterialDraggable.fromElement(element,iocContainer)
     );
 

@@ -8,7 +8,7 @@ class LanguagesComponent extends MdlTemplateComponent implements DataProvider {
     /// no final because it will be initialized in [_init]
     dynamic _store;
 
-    LanguagesComponent.fromElement(final dom.HtmlElement element,final ioc.IOCContainer iocContainer)
+    LanguagesComponent.fromElement(final dom.HtmlElement element,final ioc.Container iocContainer)
         : super(element,iocContainer) {
 
         _init();
@@ -117,7 +117,7 @@ class LanguagesComponent extends MdlTemplateComponent implements DataProvider {
 void registerDNDLanguagesComponent() {
     final MdlConfig config = new MdlWidgetConfig<LanguagesComponent>(
         _LanguagesComponentCssClasses.MAIN_CLASS,
-            (final dom.HtmlElement element, final ioc.IOCContainer iocContainer)
+            (final dom.HtmlElement element, final ioc.Container iocContainer)
         => new LanguagesComponent.fromElement(element, iocContainer));
 
     config.selectorType = SelectorType.TAG;

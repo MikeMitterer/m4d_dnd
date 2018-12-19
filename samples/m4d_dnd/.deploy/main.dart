@@ -20,7 +20,7 @@ class Application extends MaterialApplication {
 main() async {
     configLogging(show: Level.INFO);
 
-    ioc.Container.bindModules([
+    ioc.IOCContainer.bindModules([
         DNDSampleModule(), DNDDataStoreModule(), CoreComponentsModule()
     ]).bind(coreService.Application).to(Application());
 
