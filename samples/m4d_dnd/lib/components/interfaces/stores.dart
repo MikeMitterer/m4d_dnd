@@ -21,7 +21,6 @@ library m4d_dnd_sample.components.interfaces;
 
 
 import 'package:m4d_flux/m4d_flux.dart';
-import 'dart:collection';
 
 /// TransferObject (TO) for this little app.
 class Language {

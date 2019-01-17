@@ -23,7 +23,6 @@ import 'dart:html' as dom;
 
 import 'package:logging/logging.dart';
 import 'package:m4d_dnd/m4d_dnd.dart';
-import 'package:validate/validate.dart';
 
 import "package:m4d_core/m4d_core.dart";
 export "package:m4d_core/m4d_core.dart";
@@ -34,7 +33,6 @@ import 'package:m4d_template/m4d_template.dart';
 
 import 'services.dart' as sampleService;
 
-import 'services.dart' as dndService;
 import 'components/interfaces/stores.dart';
 
 part 'components/LanguagesComponent.dart';
